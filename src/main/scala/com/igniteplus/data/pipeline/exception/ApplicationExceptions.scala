@@ -5,5 +5,5 @@ class ApplicationException (message :String, cause:Throwable)extends Exception(m
   def this(message: String) = this(message,None.orNull)
 }
 case class FileReaderException(message: String) extends  ApplicationException(message)
-case class FileWriterException(message: String) extends  ApplicationException(message)
+
 
