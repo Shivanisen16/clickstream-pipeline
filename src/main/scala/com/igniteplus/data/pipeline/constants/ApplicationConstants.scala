@@ -31,8 +31,8 @@ object ApplicationConstants {
     val DATATYPE_LOGDATA: Seq[String] = Seq("timestamp")
 
     //Column Name with null values
-    val NULL_COLUMN_NAME_ITEMDATA: Seq[String] = Seq(ApplicationConstants.ITEM_ID,ApplicationConstants.ITEM_PRICE,ApplicationConstants.PRODUCT_TYPE,ApplicationConstants.DEPARTMENT)
-    val NULL_COLUMN_NAME_LOGDATA: Seq[String] = Seq(ApplicationConstants.SESSION_ID, ApplicationConstants.ITEM_ID)
+    val PRIMARY_KEY_ITEMDATA: Seq[String] = Seq(ApplicationConstants.ITEM_ID)
+    val PRIMARY_KEY_LOGDATA: Seq[String] = Seq(ApplicationConstants.SESSION_ID, ApplicationConstants.ITEM_ID)
 
     //column Name to drop duplicates
     val COLUMN_DUPLICATE_ITEMDATA : Seq[String] = Seq(ApplicationConstants.ITEM_ID)
