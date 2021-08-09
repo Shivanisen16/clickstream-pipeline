@@ -18,7 +18,7 @@ object FileReaderService {
       case e: Exception => FileReaderException("Unable to read file from "+ s"$fileAdd")
         spark.emptyDataFrame
     }
-    FileWriterService.writeData(df,"data/output/readData.csv","csv")
+    //FileWriterService.writeData(df,"data/output/readData.csv","csv")
 
     val dfFileCount: Long = df.count()
     if(dfFileCount == 0)

@@ -51,7 +51,7 @@ object MessageCleanser {
     if (dfNullRows.count() > 0)
       FileWriterService.writeData(dfNullRows, WRITER_FILE, FORMAT)
 
-    FileWriterService.writeData(dfNotNullRows,"data/output/notNullData.csv","csv")
+    //FileWriterService.writeData(dfNotNullRows,"data/output/notNullData.csv","csv")
     dfNotNullRows
   }
 

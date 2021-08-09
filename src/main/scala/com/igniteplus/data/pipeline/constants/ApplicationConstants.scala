@@ -21,7 +21,7 @@ object ApplicationConstants {
     //file path
     val ITEMDATA = "data/input/item/item_data.csv"
     val LOGDATA = "data/input/clickstream/clickstream_log.csv"
-    val WRITER_FILE = "Writerfile/writeNullRows.csv"
+    val WRITER_FILE = "data/output/nullRowsData.csv"
 
     //Column Data name
     val COL_DATANAME_ITEMDATA : Seq[String] = Seq(ApplicationConstants.ITEM_PRICE)
