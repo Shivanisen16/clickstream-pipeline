@@ -12,9 +12,9 @@ object PipelineService {
     /************************** show both file data *************************************************/
     val itemDf: DataFrame  = FileReaderService.readData(ITEMDATA,FORMAT)
     val logDf: DataFrame = FileReaderService.readData(LOGDATA,FORMAT)
-    //itemDf.show(false)
-    //logDf.show(false)
 
+
+    /*
     /************************** change datatype *****************************************************/
     val itemDfChangedDatatype = MessageCleanser.changeDataFormat(itemDf,COL_DATANAME_ITEMDATA, DATATYPE_ITEMDATA)
     val logDfChangedDatatype = MessageCleanser.changeDataFormat(logDf,COL_DATANAME_LOGDATA, DATATYPE_LOGDATA)
@@ -27,12 +27,15 @@ object PipelineService {
     //itemDfTrimmed.show(false)
     //logDfTrimmed.show(false)
 
-    /************************** write rows with null values into seperate file **************************************/
-    val itemDfNotNull = MessageCleanser.checkForNullRow(itemDfTrimmed,PRIMARY_KEY_ITEMDATA,WRITER_FILE,FORMAT)
-    val logDfNotNull = MessageCleanser.checkForNullRow(logDfTrimmed,PRIMARY_KEY_LOGDATA,WRITER_FILE,FORMAT)
-    //itemDfNotNull.show(false)
-    //logDfNotNull.show(false)
+     */
 
+    /************************** write rows with null values into seperate file **************************************/
+    val itemDfNotNull = MessageCleanser.checkForNullRow(itemDf,PRIMARY_KEY_ITEMDATA,WRITER_FILE,FORMAT)
+    val logDfNotNull = MessageCleanser.checkForNullRow(logDf,PRIMARY_KEY_LOGDATA,WRITER_FILE,FORMAT)
+    itemDfNotNull.show(false)
+    logDfNotNull.show(false)
+
+    /*
     /**************************** deduplication *******************************************************************/
     val itemDfDedupliacted = MessageCleanser.dropDuplicates(itemDfNotNull,COLUMN_DUPLICATE_ITEMDATA)
     val logDfDeduplicated = MessageCleanser.removeDuplicateRows(logDfNotNull,COLUMN_ORDERBY_LOGDATA)
@@ -44,6 +47,8 @@ object PipelineService {
     val logDfLowerCase = MessageCleanser.changeToLowerCase(logDfDeduplicated,COLUMN_LOWERCASE_LOGDATA)
     itemDfLowerCase.show(false)
     logDfLowerCase.show(false)
+
+     */
 
 
   }
