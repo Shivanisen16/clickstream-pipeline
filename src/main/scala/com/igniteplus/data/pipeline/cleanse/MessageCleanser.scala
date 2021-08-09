@@ -2,11 +2,10 @@ package com.igniteplus.data.pipeline.cleanse
 
 import com.igniteplus.data.pipeline.constants.ApplicationConstants.{FORMAT, WRITER_FILE}
 import com.igniteplus.data.pipeline.service.FileWriterService
-import com.igniteplus.data.pipeline.util.ApplicationUtil.createSparkSession
 import org.apache.spark.sql.{Column, DataFrame, SparkSession}
 import org.apache.spark.sql.expressions.Window
-import org.apache.spark.sql.functions.{col, desc, lower, row_number, to_date, trim, unix_timestamp, when}
-import org.apache.spark.sql.types.{StringType, StructField}
+import org.apache.spark.sql.functions.{col, desc, lower, row_number, trim, unix_timestamp, when}
+import org.apache.spark.sql.types.StringType
 
 object MessageCleanser {
 
@@ -38,6 +37,25 @@ object MessageCleanser {
   }
 
   //filter rows with null values & write it to seperate file
+  def checkForNullRow(df:DataFrame, columnList: Seq[String],filePath:String,fileFormat:String)(implicit spark:SparkSession): DataFrame = {
+
+    val colName: Seq[Column] = columnList.map(ex => col(ex))
+    val condition:Column = colName.map(ex => ex.isNull).reduce(_||_)
+    val dfNotNullRows:DataFrame = df.withColumn("nullFlag" , when(condition,value = "true").otherwise(value = "false"))
+    dfNotNullRows.show()
+
+    // filter out all Null row in a dataframe
+    val  dfNullRows:DataFrame = dfNotNullRows.filter(dfNotNullRows("nullFlag")==="true")
+
+    //Write Null rows to a separate file
+    if (dfNullRows.count() > 0)
+      FileWriterService.writeData(dfNullRows, WRITER_FILE, FORMAT)
+
+    FileWriterService.writeData(dfNotNullRows,"data/output/notNullData.csv","csv")
+    dfNotNullRows
+  }
+
+  //ALternative: filter rows with null values & write it to seperate file
   /* def filterNullRows (dfTemp: DataFrame, colName: Seq[String])(implicit spark:SparkSession): DataFrame = {
     var dfNullRows = dfTemp
     for(i <- colName){
@@ -55,23 +73,6 @@ object MessageCleanser {
     dfFilterNotNullRows = dfTemp.na.drop(colName)
     dfFilterNotNullRows
   }*/
-
-  //filter rows with null values & write it to seperate file
-  def checkForNullRow(df:DataFrame, columnList: Seq[String],filePath:String,fileFormat:String)(implicit spark:SparkSession): DataFrame = {
-
-    val colName: Seq[Column] = columnList.map(ex => col(ex))
-    val condition:Column = colName.map(ex => ex.isNull).reduce(_||_)
-    val dfNotNullRows:DataFrame = df.withColumn("nullFlag" , when(condition,value = "true").otherwise(value = "false"))
-    dfNotNullRows.show()
-
-    // filter out all Null row in a dataframe
-    val  dfNullRows:DataFrame = dfNotNullRows.filter(dfNotNullRows("nullFlag")==="true")
-
-    //Write NULL ROWS to a separate file
-    if (dfNullRows.count() != 0)
-      FileWriterService.writeData(dfNullRows,filePath, fileFormat)
-    dfNotNullRows
-  }
 
   //drop duplicates
   def dropDuplicates(df: DataFrame,colName: Seq[String]): DataFrame={

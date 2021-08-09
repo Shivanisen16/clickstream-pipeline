@@ -16,11 +16,12 @@ object ApplicationConstants {
     val ITEM_ID : String = "item_id"
     val SESSION_ID : String = "session_id"
 
+    val FAILURE_EXIT_CODE : Int = 1
 
     //file path
-    val ITEMDATA = "data/item_data.csv"
-    val LOGDATA = "data/view_log.csv"
-    val WRITER_FILE = "Writerfile/Writer.csv"
+    val ITEMDATA = "data/input/item/item_data.csv"
+    val LOGDATA = "data/input/clickstream/clickstream_log.csv"
+    val WRITER_FILE = "Writerfile/writeNullRows.csv"
 
     //Column Data name
     val COL_DATANAME_ITEMDATA : Seq[String] = Seq(ApplicationConstants.ITEM_PRICE)
@@ -43,8 +44,5 @@ object ApplicationConstants {
     //Column to change to lower case
     val COLUMN_LOWERCASE_ITEMDATA : Seq[String] = Seq(ApplicationConstants.DEPARTMENT)
     val COLUMN_LOWERCASE_LOGDATA : Seq[String] = Seq(ApplicationConstants.REDIRECTION_SOURCE)
-
-
-
 
 }

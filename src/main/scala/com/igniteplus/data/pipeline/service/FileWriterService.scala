@@ -1,14 +1,22 @@
 package com.igniteplus.data.pipeline.service
 
+import com.igniteplus.data.pipeline.exception.FileWriterException
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object FileWriterService {
 
-  def writeData (dfTemp: DataFrame,fileAdd: String, fileformat: String)(implicit spark:SparkSession): Unit ={
+  def writeData (df: DataFrame,fileAdd: String, fileFormat: String)(implicit spark:SparkSession): Unit ={
 
-      var dfWrite = dfTemp
-      dfWrite.write.format("fileformat")
-        .save("fileAdd")
+    try {
+      df.write.format(fileFormat)
+        .option("header", "true")
+        .mode("overwrite")
+        .option("sep", ",")
+        .save(fileAdd)
+    }
+    catch{
+      case e: Exception => FileWriterException("Unable to write data to the location "+ s"$fileAdd")
+    }
 
   }
 
