@@ -2,6 +2,7 @@ package com.igniteplus.data.pipeline.cleanse
 
 import com.igniteplus.data.pipeline.constants.ApplicationConstants.{FORMAT, WRITER_FILE}
 import com.igniteplus.data.pipeline.service.FileWriterService
+import com.igniteplus.data.pipeline.service.FileWriterService.writeData
 import org.apache.spark.sql.{Column, DataFrame, SparkSession}
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions.{col, desc, lower, row_number, trim, unix_timestamp, when}
@@ -9,7 +10,7 @@ import org.apache.spark.sql.types.StringType
 
 object MessageCleanser {
 
-  //change datatype of time stamp
+   /***************** change datatype of time stamp ****************************************/
   def changeDataFormat (df: DataFrame, colName: Seq[String], dtype: Seq[String]): DataFrame = {
 
     var dfChangeDataType : DataFrame = df
@@ -24,7 +25,7 @@ object MessageCleanser {
 
   }
 
-  // trim Column
+  /**************************** trim Column *******************************************************/
   def trimColumn (dfTemp: DataFrame) : DataFrame = {
 
     var dfTrimColumn : DataFrame = dfTemp
@@ -36,8 +37,8 @@ object MessageCleanser {
 
   }
 
-  //filter rows with null values & write it to seperate file
-  def checkForNullRow(df:DataFrame, columnList: Seq[String],filePath:String,fileFormat:String)(implicit spark:SparkSession): DataFrame = {
+
+  /*def checkForNullRow(df:DataFrame, columnList: Seq[String],filePath:String,fileFormat:String)(implicit spark:SparkSession): DataFrame = {
 
     val colName: Seq[Column] = columnList.map(ex => col(ex))
     val condition:Column = colName.map(ex => ex.isNull).reduce(_||_)
@@ -51,8 +52,25 @@ object MessageCleanser {
     if (dfNullRows.count() > 0)
       FileWriterService.writeData(dfNullRows, WRITER_FILE, FORMAT)
 
-    //FileWriterService.writeData(dfNotNullRows,"data/output/notNullData.csv","csv")
+    FileWriterService.writeData(dfNotNullRows,"data/output/notNullData.csv","csv")
     dfNotNullRows
+  }*/
+
+  /*************************** filter rows with null values & write it to seperate file *******************/
+  def checkForNullRow(df: DataFrame, primaryKeyColumns :Seq[String], filePath:String,fileFormat:String)(implicit spark:SparkSession) : DataFrame = {
+    val primaryKeysAsColumnDataType : Seq[Column] = primaryKeyColumns.map(x => col(x))
+    val condition : Column = primaryKeysAsColumnDataType.map(x => x.isNull).reduce(_||_)
+    val nullFlag : DataFrame = df.withColumn("nullFlag",when(condition,"true").otherwise("false"))
+
+    val notNullDF : DataFrame = nullFlag.filter("nullFlag==false")
+    val nullDF : DataFrame = nullFlag.filter("nullFlag==true")
+    val notNullDf : DataFrame = notNullDF.drop("nullFlag")
+
+
+    writeData(nullDF, WRITER_FILE, FORMAT)
+
+    writeData(notNullDf,"data/output/notNullData/notNullData.csv","csv")
+    notNullDf
   }
 
   //ALternative: filter rows with null values & write it to seperate file
@@ -74,14 +92,14 @@ object MessageCleanser {
     dfFilterNotNullRows
   }*/
 
-  //drop duplicates
+  /************************************ drop duplicates ************************************************/
   def dropDuplicates(df: DataFrame,colName: Seq[String]): DataFrame={
     val dfDropDuplicates:DataFrame=df.dropDuplicates(colName)
     dfDropDuplicates
 
   }
 
-  // de-duplication
+  /************************************ de-duplication ************************************************/
   def removeDuplicateRows(dfTemp: DataFrame, orderByColumn: String) : DataFrame = {
     val windowSpec  = Window.partitionBy("session_id","item_id").orderBy(desc(orderByColumn))
     val dfDeduplicated: DataFrame = dfTemp.withColumn("row_number",row_number.over(windowSpec))
@@ -90,8 +108,7 @@ object MessageCleanser {
     dfDeduplicated
   }
 
-
-  //change to lowercase
+  /*********************************** change to lowercase **********************************************/
   def changeToLowerCase(df: DataFrame, colName: Seq[String]) : DataFrame = {
     var dfLowerCase: DataFrame =df
     for(i <- colName.indices) {

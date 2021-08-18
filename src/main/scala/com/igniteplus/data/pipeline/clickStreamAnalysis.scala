@@ -10,15 +10,15 @@ object clickStreamAnalysis {
   def main(args: Array[String]): Unit = {
 
       implicit val spark: SparkSession = ApplicationUtil.createSparkSession(APP_NAME, MASTER)
-      try{
-        PipelineService.executePipeline()
-      }
 
-      catch {
+        PipelineService.executePipeline()
+
+
+      /*catch {
         case ex : FileReaderException =>
           println(ex)
           sys.exit(ApplicationConstants.FAILURE_EXIT_CODE)
-      }
+      }*/
 
   }
 }

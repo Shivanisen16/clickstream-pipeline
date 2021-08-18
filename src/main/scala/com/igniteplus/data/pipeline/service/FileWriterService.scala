@@ -5,17 +5,17 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object FileWriterService {
 
-  def writeData (df: DataFrame,fileAdd: String, fileFormat: String)(implicit spark:SparkSession): Unit ={
+  def writeData (df: DataFrame,filePath: String, fileFormat: String)(implicit spark:SparkSession): Unit ={
 
     try {
-      df.write.format(fileFormat)
-        .option("header", "true")
+      df.write
+        .format(fileFormat)
+        .option("path", filePath)
         .mode("overwrite")
-        .option("sep", ",")
-        .save(fileAdd)
+        .save()
     }
     catch{
-      case e: Exception => FileWriterException("Unable to write data to the location "+ s"$fileAdd")
+      case e: Exception => FileWriterException("Unable to write data to the location "+ s"$filePath")
     }
 
   }

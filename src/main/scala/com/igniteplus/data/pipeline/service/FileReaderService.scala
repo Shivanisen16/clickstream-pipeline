@@ -6,23 +6,23 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object FileReaderService {
 
-  def readData (fileAdd:String, fileformat:String)(implicit spark:SparkSession): DataFrame ={
+  def readData (fileAdd:String, fileformat: String)(implicit spark:SparkSession): DataFrame ={
 
     val df: DataFrame = try {
-      spark.read.format(s"$fileformat")
+      spark.read.format(fileformat)
         .option("inferSchema", "true")
         .option("header", "true")
-        .load(s"$fileAdd")
+        .load(fileAdd)
     }
     catch {
-      case e: Exception => FileReaderException("Unable to read file from "+ s"$fileAdd")
+      case e: Exception => FileReaderException("Unable to read file from "+ fileAdd)
         spark.emptyDataFrame
     }
-    //FileWriterService.writeData(df,"data/output/readData.csv","csv")
+    FileWriterService.writeData(df,"data/output/readData.csv","csv")
 
     val dfFileCount: Long = df.count()
     if(dfFileCount == 0)
-      throw FileReaderException("Unable to read file from "+ s"$fileAdd")
+      throw FileReaderException("Unable to read file from "+ fileAdd)
     df
   }
 
