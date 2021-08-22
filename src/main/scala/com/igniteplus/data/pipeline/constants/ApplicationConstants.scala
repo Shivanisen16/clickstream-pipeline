@@ -6,6 +6,7 @@ object ApplicationConstants {
 
     val APP_NAME: String = "product"
     val MASTER: String = "local"
+    val JOIN_TYPE_NAME = "left"
 
     //column name
     val EVENT_TIMESTAMP : String = "event_timestamp"

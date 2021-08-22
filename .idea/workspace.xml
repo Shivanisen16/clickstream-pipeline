@@ -5,29 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bb155ab-3793-4d01-ac62-35c620e86590" name="Default Changelist" comment="Writer file for null rows">
-      <change afterPath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/.part-00000-ec10bcba-b1a0-40e3-a78f-54bd753ce56f-c000.csv.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/part-00000-ec10bcba-b1a0-40e3-a78f-54bd753ce56f-c000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/nullRowsData.csv/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/nullRowsData.csv/.part-00000-4000afc5-88b6-47ab-9f54-b22202ba1606-c000.csv.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/nullRowsData.csv/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/nullRowsData.csv/part-00000-4000afc5-88b6-47ab-9f54-b22202ba1606-c000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/readData.csv/._SUCCESS.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/readData.csv/.part-00000-15682ed1-6e32-4172-9803-4f79c9314589-c000.csv.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/readData.csv/_SUCCESS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/output/readData.csv/part-00000-15682ed1-6e32-4172-9803-4f79c9314589-c000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output/notNullData.csv/_temporary/0/_temporary/attempt_20210810020312_0014_m_000000_0/.part-00000-f311240f-4ec3-47bc-88ce-0573a60fdb12-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output/notNullData.csv/_temporary/0/_temporary/attempt_20210810020312_0014_m_000000_0/part-00000-f311240f-4ec3-47bc-88ce-0573a60fdb12-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output/nullRowsData.csv/_temporary/0/_temporary/attempt_20210810022516_0015_m_000000_0/.part-00000-ebbd656b-7c37-4e26-b485-d3e7b978634a-c000.csv.crc" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/notNullData/_temporary/0/_temporary/attempt_20210811164550_0010_m_000000_0/.part-00000-e7f06a24-9209-4b13-991b-6b1f0752ca4a-c000.csv.crc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output/nullRowsData.csv/_temporary/0/_temporary/attempt_20210810022516_0015_m_000000_0/part-00000-ebbd656b-7c37-4e26-b485-d3e7b978634a-c000.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/notNullData/_temporary/0/_temporary/attempt_20210811164550_0010_m_000000_0/part-00000-e7f06a24-9209-4b13-991b-6b1f0752ca4a-c000.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output/readData.csv/_temporary/0/_temporary/attempt_20210810020310_0007_m_000000_0/.part-00000-df422f3b-6434-443d-8907-f8e87a8ed876-c000.csv.crc" beforeDir="false" afterPath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/_SUCCESS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output/readData.csv/_temporary/0/_temporary/attempt_20210810020310_0007_m_000000_0/part-00000-df422f3b-6434-443d-8907-f8e87a8ed876-c000.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/cleanse/MessageCleanser.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/cleanse/MessageCleanser.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/clickStreamAnalysis.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/clickStreamAnalysis.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/service/FileReaderService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/service/FileReaderService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/service/FileWriterService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/service/FileWriterService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/.part-00000-4d68acfe-f6a8-450d-9804-8b9315691465-c000.csv.crc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/part-00000-4d68acfe-f6a8-450d-9804-8b9315691465-c000.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/output/nullRowsData.csv/.part-00000-1a8a4135-d52c-4b75-945d-f56726720bf9-c000.csv.crc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/output/nullRowsData.csv/part-00000-1a8a4135-d52c-4b75-945d-f56726720bf9-c000.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/output/readData.csv/.part-00000-8357c17a-cc8b-4c9f-93a8-52bff91ba0a7-c000.csv.crc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/output/readData.csv/part-00000-8357c17a-cc8b-4c9f-93a8-52bff91ba0a7-c000.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/.part-00000-34e4ce0b-2948-44f2-8639-5b152b239b48-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/notNullData/notNullData.csv/part-00000-34e4ce0b-2948-44f2-8639-5b152b239b48-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/nullRowsData.csv/.part-00000-5ce470d5-8be9-4100-9a0c-3cb7065a6b65-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/nullRowsData.csv/part-00000-5ce470d5-8be9-4100-9a0c-3cb7065a6b65-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/readData.csv/.part-00000-d8252520-23fc-42cc-802c-fb02336c9c1b-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output/readData.csv/part-00000-d8252520-23fc-42cc-802c-fb02336c9c1b-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/constants/ApplicationConstants.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/constants/ApplicationConstants.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/service/PipelineService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/service/PipelineService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/transform/JoinService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/igniteplus/data/pipeline/transform/JoinService.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +70,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CLICKSTREAM-DATA-PIPELINE" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
